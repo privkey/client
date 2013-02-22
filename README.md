@@ -1,4 +1,4 @@
-client
+PrivKey
 ======
 Ende-zu-Ende Verschlüsselung aller E-Mails im Browser
 - keine Installation
