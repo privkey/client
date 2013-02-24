@@ -14,3 +14,5 @@ Ende-zu-Ende Verschlüsselung aller E-Mails im Browser
 This repository contains client-side PrivKey.
 
 Read documentation: https://github.com/privkey/client/wiki
+
+Working UI demo: https://c9.io/privkey/client/workspace/index.html
