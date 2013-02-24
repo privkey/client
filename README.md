@@ -16,3 +16,5 @@ This repository contains client-side PrivKey.
 Read documentation: https://github.com/privkey/client/wiki
 
 Working UI demo: https://c9.io/privkey/client/workspace/index.html
+
+Get involved! Start coding now: https://c9.io/privkey/client
