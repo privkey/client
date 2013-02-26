@@ -3,6 +3,8 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!-- add meta description, meta keywords etc. -->
+    <!-- configure webserver to send this header, as this meta tag is not strictly w3c valid -->
     <meta http-equiv="X-UA-Compatible" content="chrome=1">
     <title>PrivKey.de</title>
     <link rel="stylesheet" href="jquery/jquery.mobile-1.2.0.min.css" />
@@ -174,9 +176,9 @@
 
         <div id="menu" data-role="popup" data-theme="c" data-shadow="true" data-corners="true" data-inset="true"> <!--   -->
             <ul data-role="listview" data-inset="true" style="min-width:135px;">
-                <li data-icon="home"><a href="http://blog.privkey.de" rel="external">Blog</a></li>
-                <li data-icon="false"><a href="http://blog.privkey.de/help" rel="external">Help</a></li>
-                <li data-icon="false"><a href="http://blog.privkey.de/impressum" rel="external">Impressum</a></li>
+                <li data-icon="home"><a href="http://blog.privkey.de" rel="external" target="_blank">Blog</a></li>
+                <li data-icon="false"><a href="http://blog.privkey.de/help" rel="external" target="_blank">Help</a></li>
+                <li data-icon="false"><a href="http://blog.privkey.de/impressum" rel="external" target="_blank">Impressum</a></li>
             </ul>
         </div>
     </div>
@@ -449,13 +451,12 @@
         <div data-role="content">
             <ul data-role="listview" data-divider-theme="c" data-inset="false">
                 <li data-icon="delete"><a href="#">Logout</a></li>
-                <li><a href="http://www.blog.privkey.de/" rel="external">Blog</a></li>
-                <li><a href="http://www.blog.privkey.de/faq" rel="external">FAQ</a></li>
-                <li><a href="http://www.blog.privkey.de/help" rel="external">Help</a></li>
-                <li><a href="#" rel="external">Report a bug</a></li>
-                <li><a href="#" rel="external">Request a feature</a></li>
+                <!-- <li><a href="http://www.blog.privkey.de/" rel="external" target="_blank">Blog</a></li>
+                <li><a href="http://www.blog.privkey.de/faq" rel="external" target="_blank">FAQ</a></li>-->
+                <li><a href="https://github.com/privkey/client/wiki" rel="external" target="_blank">Developer Wiki</a></li>
+                <li><a href="https://github.com/privkey/client/issues/new" rel="external"  target="_blank">Report an issue</a></li>
                 <li><a href="#tAndC" data-rel="popup" data-transition="pop" data-position-to="window">Terms and conditions</a></li>
-                <li><a href="http://blog.privkey.de/impressum" rel="external">Impressum</a></li>
+                <li><a href="http://blog.privkey.de/impressum" rel="external" target="_blank">Impressum</a></li>
             </ul>
         </div>
     </div>
