@@ -12,7 +12,7 @@ var privkey = {
             if (options.toPage.selector == "#increaseSecurity") {
                 $('#securePassword').focus();
             } else if (options.toPage[0].id == "msg") {
-                if (options.options.allowSamePageTransition == false) {
+                if (options.options.allowSamePageTransition === false) {
                     $('#replyMessage').focus();
                 } else {
                     $('#toEmailsNew').focus();
@@ -26,7 +26,7 @@ var privkey = {
         init: function() {
             // modification in src/encoding/openpgp.encoding.asciiarmor.js
             // shows version and commentstring only
-            openpgp_encoding_armor_addheader = function() {
+            var openpgp_encoding_armor_addheader = function() {
                 var result = "";
                 //if (openpgp.config.config.show_version) {
                 result += /*"Version: "+*/openpgp.config.versionstring+'\r\n';
@@ -58,7 +58,7 @@ var privkey = {
                 }
             });
             $('#messageStart').on('keyup', function() {
-                if ($('#messageStart').val().replace(/\s/g, '') != "") {
+                if ($('#messageStart').val().replace(/\s/g, '') !== "") {
                     $('label[for="messageStart"]').remove();
                 }
             });
@@ -71,7 +71,7 @@ var privkey = {
                     proceed = false;
                 }
 
-                if ($('#messageStart').val().replace(/\s/g, '') == "") {
+                if ($('#messageStart').val().replace(/\s/g, '') === "") {
                     $('#messageStart').after('<label for="messageStart" class="red">Enter a message</label>');
                     proceed = false;
                 }
@@ -87,7 +87,7 @@ var privkey = {
                 }
             });
             $('#yourPassword').on('keyup', function () {
-                if ($('#yourPassword').val() != "") {
+                if ($('#yourPassword').val() !== "") {
                     $('#login label[for="yourPassword"]').remove();
                 }
             });
@@ -108,7 +108,7 @@ var privkey = {
                     proceed = false;
                 }
 
-                if ($('#yourPassword').val() == "") {
+                if ($('#yourPassword').val() === "") {
                     $('#yourPassword').after('<label for="yourPassword" class="red">Enter your password</label>');
                     proceed = false;
                 }
@@ -159,7 +159,7 @@ var privkey = {
                     proceed = false;
                 }
 
-                if ($('#securePassword').val() != $('#securePasswordConfirm').val() || $('#securePasswordConfirm').val().replace(/\s/g) == "") {
+                if ($('#securePassword').val() != $('#securePasswordConfirm').val() || $('#securePasswordConfirm').val().replace(/\s/g) === "") {
                     $('#securePasswordConfirm').after('<label for="securePasswordConfirm" class="red">Confirmed password does not match</label>');
                     proceed = false;
                 }
@@ -175,9 +175,9 @@ var privkey = {
                         textVisible: true,
                         theme: 'e'
                     });
-                    window.setTimeout("$.mobile.loading('show', {text: 'encrypting...', textVisible: true, theme: 'e'})", 1000);
-                    window.setTimeout("$.mobile.loading('show', {text: 'sending...', textVisible: true, theme: 'e'})", 2000);
-                    window.setTimeout("$.mobile.loading('hide')", 3000);
+                    window.setTimeout(function() {$.mobile.loading('show', {text: 'encrypting...', textVisible: true, theme: 'e'})}, 1000);
+                    window.setTimeout(function() {$.mobile.loading('show', {text: 'sending...', textVisible: true, theme: 'e'})}, 2000);
+                    window.setTimeout(function() {$.mobile.loading('hide')}, 3000);
                     // save password hash + salt in db
                     /*
                      var keyPair = openpgp.generate_key_pair(1, 512, $('#yourEmail').val(), $('#securePassword').val());
@@ -192,7 +192,7 @@ var privkey = {
                      sendMessage($('#toEmailsStart').val(), $('#messageStart').val());
                      }
                      */
-                    window.setTimeout("$.mobile.changePage($('#msg'))", 3001);
+                    window.setTimeout(function() {$.mobile.changePage($('#msg'))}, 3001);
                 }
             });
 
@@ -230,7 +230,7 @@ var privkey = {
             });
 
             $('#replyMessage').on('keyup', function() {
-                if ($('#replyMessage').val().replace(/\s/g, '') != "") {
+                if ($('#replyMessage').val().replace(/\s/g, '') !== "") {
                     $('label[for="replyMessage"]').remove();
                 }
             });
@@ -243,15 +243,15 @@ var privkey = {
                     $('#toEmailsNew').after('<label for="toEmailsNew" class="red">Enter a valid email address</label>');
                     proceed = false;
                 }
-                if ($('#replyMessage').val().replace(/\s/g, '') == "") {
+                if ($('#replyMessage').val().replace(/\s/g, '') === "") {
                     $('#replyMessage').after('<label for="replyMessage" class="red">Enter a message</label>');
                     proceed = false;
                 }
 
                 if (proceed) {
                     $.mobile.loading( 'show', {text: 'encrypting...', textVisible: true, theme: 'e'});
-                    window.setTimeout("$.mobile.loading('show', {text: 'sending...', textVisible: true, theme: 'e'})", 1000);
-                    window.setTimeout("$.mobile.loading('hide')", 2000);
+                    window.setTimeout(function() {$.mobile.loading('show', {text: 'sending...', textVisible: true, theme: 'e'})}, 1000);
+                    window.setTimeout(function() {$.mobile.loading('hide')}, 2000);
                 }
             });
         },
