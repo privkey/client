@@ -7,17 +7,14 @@
     <!-- configure webserver to send this header, as this meta tag is not strictly w3c valid -->
     <meta http-equiv="X-UA-Compatible" content="chrome=1">
     <title>PrivKey.de</title>
-    <link rel="stylesheet" href="jquery/jquery.mobile-1.2.0.min.css" />
-    <!-- https://ajax.aspnetcdn.com/ajax/jquery.mobile/1.2.0/jquery.mobile-1.2.0.min.css -->
+    <link rel="stylesheet" href="jquery/jquery.mobile.1.3.0.min.css" />
     <link rel="stylesheet" href="privkey.css" />
 
     <!-- jquery -->
-    <script src="jquery/jquery.min.js"></script>
-    <!-- https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js -->
-
+    <script type="text/javascript" src="jquery/jquery.1.9.1.min.js"></script>
+    
     <!-- jquery mobile-->
-    <script src="jquery/jquery.mobile-1.2.0.min.js"></script>
-    <!-- https://ajax.aspnetcdn.com/ajax/jquery.mobile/1.2.0/jquery.mobile-1.2.0.min.js -->
+    <script src="jquery/jquery.mobile.1.3.0.min.js"></script>
 
     <script type="text/javascript" src="src/ciphers/hash/sha.js"></script>
     <script type="text/javascript" src="src/ciphers/hash/md5.js"></script>
@@ -77,9 +74,9 @@
     <script type="text/javascript" src="src/openpgp.msg.publickey.js"></script>
     <script type="text/javascript" src="src/util/util.js"></script>
 
-    <!-- custom JavaScript -->
-    <!-- <script src="aes.js"></script> -->
+    <!-- checks password strength at #increaseSecurity  -->
     <script src="jquery/jquery.pwdstr-1.0.source.js"></script>
+    <!-- custom JavaScript -->
     <script src="privkey.js"></script>
 
 </head>
@@ -224,7 +221,7 @@
 
             <input type="checkbox" id="tAndcAccept" data-theme="c" data-mini="true" />
             <label class="permanent" for="tAndcAccept">
-                Accept <a href="#tAndC" data-rel="popup" data-transition="pop" data-position-to="window">terms and conditions</a>
+                Accept <a href="#tAndC" id="tAndClink">terms and conditions</a> <!-- data-rel="popup" data-transition="pop" data-position-to="window" -->
             </label>
 
             <a id="proceedButton" data-role="button" href="#" data-icon="arrow-r" data-theme="b" data-iconpos="left">
@@ -243,7 +240,11 @@
                 <p>PrivKey is provided "as is" without express or implied warranty of any kind. As fare as applicable by law.</p>
                 <h4>§4 License</h4>
                 <p>PrivKey is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation; either version 2 of the License, or (at your option) any later version.</p>
-                <h4>§5 Final</h4>
+                <h4>§5 Disclaimer</h4>
+                <p>PrivKey does not cover actions that are not according to law. Eventhough encryption itself is nearly uncrackable, keep in mind that authorities can hijack your computer in order to read passwords and secret keys.<br />
+                    The security of PrivKey depends on the password you choose!<br /> The longer the better, keep it secret.
+                </p>
+                <h4>§6 Final</h4>
                 <p>In case any of these paragraphs is invalid, all the others will remain.<br />
                     These terms and conditions are subject to change.<br />
                     Location for legal issues is Hamburg, Germany.<br />
@@ -455,9 +456,11 @@
                 <li><a href="http://www.blog.privkey.de/faq" rel="external" target="_blank">FAQ</a></li>-->
                 <li><a href="https://github.com/privkey/client/wiki" rel="external" target="_blank">Developer Wiki</a></li>
                 <li><a href="https://github.com/privkey/client/issues/new" rel="external"  target="_blank">Report an issue</a></li>
-                <li><a href="#tAndC" data-rel="popup" data-transition="pop" data-position-to="window">Terms and conditions</a></li>
+                <li><a href="#tAndC2" id="tAndCoptionslink" data-rel="popup" data-transition="pop" data-position-to="window">Terms and conditions</a></li>
                 <li><a href="http://blog.privkey.de/impressum" rel="external" target="_blank">Impressum</a></li>
             </ul>
+        </div>
+        <div id="tAndC2" data-role="popup" data-theme="b" data-overlay-theme="c" class="ui-corner-all">
         </div>
     </div>
 
