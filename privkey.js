@@ -3,12 +3,12 @@ var privkey = {
         privkey.crypto.init();
         $(document).ready(function() {
             // noscript issue, makes DOM visible
-            $('head').after('<style type="text/css">[data-role="page"] {display: block;}</style>');
+            $('head').append('<style type="text/css">[data-role="page"] {display: block;}</style>');
             // set elements event handler as soon as DOM is ready
             privkey.ui.setHandler();
         });
         // fix focus issues on page transmissions
-        $(document).live('pagechange', function(toPage, options) {
+        $(document).on('pagechange', function(toPage, options) {
             if (options.toPage.selector == "#increaseSecurity") {
                 $('#securePassword').focus();
             } else if (options.toPage[0].id == "msg") {
@@ -49,6 +49,7 @@ var privkey = {
             privkey.ui.setStartHandler();
             privkey.ui.setIncreaseSecurityHandler();
             privkey.ui.setMsgHandler();
+            privkey.ui.setOptionsHandler();
         },
         // handles events on #start page
         setStartHandler: function () {
@@ -137,13 +138,16 @@ var privkey = {
                 if (privkey.ui.validateEmail($('#yourEmail').val())) {
                     $('label[for="yourEmail"]').remove();
                     // check whether we have an user account for this email address.
-                    // In case we have: Take email address (and perhaps password) and go to login
+                    // In case we have: Take email address (and perhaps password) and open login popup
                 }
             });
             $('#tAndcAccept').on('change', function() {
-                if ($('#tAndcAccept').attr('checked') == 'checked') {
+                if ($('#tAndcAccept').prop('checked')) {
                     $('label[for="tAndcAccept"]:not(.permanent)').remove();
                 }
+            });
+            $('#tAndClink').on('click', function() {
+                $('#tAndC').popup("open");
             });
 
             $('#proceedButton').on('click', function() {
@@ -164,7 +168,7 @@ var privkey = {
                     proceed = false;
                 }
 
-                if ($('#tAndcAccept').attr('checked') != "checked") {
+                if (!$('#tAndcAccept').prop("checked")) {
                     $('label[for="tAndcAccept"]').after('<label for="tAndcAccept" class="red">Please agree to our terms an conditions</label>');
                     proceed = false;
                 }
@@ -197,7 +201,7 @@ var privkey = {
             });
 
             $('#accept').on('click', function() {
-                $('#tAndcAccept').attr("checked",true).checkboxradio("refresh");
+                $('#tAndcAccept').prop("checked",true).checkboxradio("refresh");
             });
         },
         // handles events of #msg and #new
@@ -215,6 +219,7 @@ var privkey = {
                 $('#friend').css('padding-top', '0');
                 $('#friend').css('padding-bottom', '0');
                 $('#toEmailsNew').css('display', 'inline');
+                $('#friend div').css('display', 'block');
 
                 $('#loadPreviousMessages').remove();
                 $('#msg [data-role="content"] [data-role="listview"]').remove();
@@ -254,6 +259,12 @@ var privkey = {
                     window.setTimeout(function() {$.mobile.loading('hide')}, 2000);
                 }
             });
+        },
+        setOptionsHandler: function () {
+            $('#tAndC2').append($('#tAndC').children().clone());
+            $('#tAndC2 #accept').text('OK');
+            $('#tAndC2 #accept').css('float', 'right');
+            $('#tAndC2 #accept').buttonMarkup({ mini: true, inline: true });
         },
         // validates email addresses Todo: validate multiple email adresses, too
         validateEmail: function (email) {
