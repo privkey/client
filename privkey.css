@@ -1,5 +1,5 @@
 /* noscript issue */
-[data-role="page"] { display:none; }
+div[data-role="page"] { display:none; }
 noscript h1, noscript p {
     width: 100%;
 }
@@ -8,10 +8,10 @@ noscript h1, noscript p {
     border: 9px solid red;
     margin: 0 15%;
 }
-p#noscriptActivate {
+#noscriptActivate {
     font-size: 20px;
 }
-a#noscriptChromium {
+#noscriptChromium {
     font-size: 20px;
     font-weight: bold;
     color: green;
@@ -19,19 +19,19 @@ a#noscriptChromium {
     padding: 2px 41px;
     border: 2px solid green;
 }
-span#noscriptOpenSource {
+#noscriptOpenSource {
     font-family: monospace;
     font-size: 14px;
     line-height: 3em;
 }
 
 /* highlight tags wrong input */
-label.red {
+.red {
     color: red
 }
 
 /* #increaseSecurity password strength in one line */
-span.oneline {
+.oneline {
     display: inline;
 }
 
@@ -60,7 +60,8 @@ h3#title {
     float: left;
 }
 
-a#info {
+/* AWS link on #start */
+#info {
     font-weight: 100;
     color: gray;
     text-decoration: none;
@@ -68,12 +69,18 @@ a#info {
     cursor: help;
 }
 
-div#loginLink {
+#loginLink {
     float: right;
 }
 
 #menu.ui-body-c {
     border: none;
+}
+
+/* modify text input fields */
+.ui-field-contain div.ui-input-text {
+    width: auto;
+    display: block;
 }
 
 input.ui-input-text, textarea.ui-input-text {
@@ -88,12 +95,21 @@ input.ui-input-text {
     padding-top: 0;
 }
 
+/* legend solution in sight
+.ui-checkbox {
+    width: 100px;
+}*/
+
 #tAndC h4 {
     margin-bottom: 0.2em;
 }
 
 #tAndC p {
     margin-top: 0;
+}
+
+#tAndcAccept {
+    visibility: hidden;
 }
 
 #msg .ui-btn-hover-b, #new .ui-btn-hover-b {
@@ -124,11 +140,11 @@ input.ui-input-text {
     background-image: linear-gradient( #6facd5,#4272a4 );
 }
 
-#toEmailsNew {
+#toEmailsNew, #friend div {
     display: none;
 }
 
-a.logout {
+.logout {
     float: right;
 }
 
@@ -169,7 +185,7 @@ textarea.ui-input-text {
     }
 }
 
-div#frame {
+#frame {
     bottom:0;
 }
 
