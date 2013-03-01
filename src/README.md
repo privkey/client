@@ -1,13 +1,15 @@
 Cryptographic Source Code
 ======
-PrivKey employs OpenPGPjs (http://www.openpgpgjs.org) in order to fullfill its cryptographic functionality. 
-This directory "src/" contains included files in an uncompressed manner. Everyone can review them for correct implementation and functionality.
+PrivKey includes OpenPGPjs (http://www.openpgpgjs.org) in order to fullfill its cryptographic functionality. 
+This directory _src/_ contains its source code in an uncompressed manner. It can be reviewed for correct functionality.
 
-For better performance these JavaScript files are compressed into a single file "openpgp.js".
-We use the closure compiler (http://closure-compiler.appspot.com/home) in "Simple" mode.
+For better performance it is compressed into a single file _openpgpg.js_.
 
-If you want to verify "openpgp.js" you can simply copy & past to the copmiler:
-
+We applied the Closure Compiler (http://closure-compiler.appspot.com/home) in 
+    SIMPLE_OPTIMIZATIONS
+mode.
+To verify our result simply copy & paste:
+```
 // ==ClosureCompiler==
 // @compilation_level SIMPLE_OPTIMIZATIONS
 // @output_file_name openpgp.js
@@ -56,3 +58,6 @@ If you want to verify "openpgp.js" you can simply copy & past to the copmiler:
 // @code_url https://c9.io/privkey/client/workspace/src/openpgp.msg.publickey.js
 // @code_url https://c9.io/privkey/client/workspace/src/util/util.js
 // ==/ClosureCompiler==
+```
+
+In a productive version all HTML, CSS and JavaScript files will be compressed as well.
