@@ -1,7 +1,7 @@
 Cryptographic Source Code
 ======
 PrivKey includes OpenPGPjs (http://www.openpgpgjs.org) in order to fullfill its cryptographic functionality. 
-This directory _src/_ contains its source code in an uncompressed manner. It can be reviewed for correct functionality.
+This directory _src/_ contains the source code in an uncompressed manner. It can be reviewed for correct functionality.
 
 For better performance it is compressed into a single file _openpgpg.js_.
 
