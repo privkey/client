@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!-- add meta description, meta keywords etc. -->
+    <!-- configure webserver to send this header, as this meta tag is not strictly w3c valid -->
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>PrivKey.de</title>
+    <link rel="stylesheet" href="../jquery/jquery.mobile.1.3.0.min.css" />
+    <link rel="stylesheet" href="../privkey.css" />
+
+    <!-- jquery ->
+    <script type="text/javascript" src="jquery/jquery.1.9.1.min.js"></script>
+    
+    <!-- jquery mobile->
+    <script src="jquery/jquery.mobile.1.3.0.min.js"></script>
+
+    <!-- compressed openpgpg ->
+    <script src="openpgp.js"></script>
+
+    <!-- checks password strength at #increaseSecurity  ->
+    <script src="jquery/jquery.pwdstr-1.0.source.js"></script>
+    <!-- custom JavaScript -->
+    <script src="privkey.min.js"></script>
+
+</head>
+<body>
+    <noscript>
+        <div id="noscript">
+            <h1>This website is based on client-side <strong>JavaScript</strong> encryption</h1>
+            <p>
+                to ensure high level security and privacy.
+            </p>
+            <p id="noscriptActivate">
+                Please <strong><i>activate</i> JavaScript</strong> or use a modern Browser.<br />
+                We recommend:
+            </p>
+            <p>
+                <a href="http://www.chip.de/webapps/Chromium-Download_53803667.html" id="noscriptChromium">Chromium</a><br />
+                <span id="noscriptOpenSource">(OpenSource version of Google Chrome)</span>
+            </p>
+        </div>
+    </noscript>
+
+    <!--[if IE]>
+    <script src="CFInstall.min.js"></script>
+
+    <style type="text/css">
+    .chromeFrameInstallDefaultStyle {
+        border: 5px solid blue;
+    }
+    </style>
+
+    <script type="text/javascript">
+        // The conditional ensures that this code will only execute in IE,
+        // Therefore we can use the IE-specific attachEvent without worry
+        window.attachEvent("onload", function() {
+            CFInstall.check();
+        });
+    </script>
+    <![endif]-->
+
+    <!-- Start -->
+    <div data-role="page" id="start">
+        <div data-theme="e" data-role="header">
+            <h4>
+                PrivKey.de
+            </h4>
+        </div>
+        <div data-role="content">
+            <h4 id="subtitle">
+                end-to-end&nbsp;encrypted - for&nbsp;all&nbsp;devices - hosted&nbsp;in&nbsp;<a href="http://aws.amazon.com/" target="_blank" id="info" title="Amazon Web Service: fast and secure cloud storage">AWS</a>
+            </h4>
+            <h3 id="title">
+                Send Email Secure
+            </h3>
+            <div data-role="fieldcontain">
+                <fieldset data-role="controlgroup">
+                    <!--<label for="toEmailsStart"></label>-->
+                    <input name="toEmailsStart" id="toEmailsStart" placeholder="To: Email(s)" value="" type="text" />
+                </fieldset>
+            </div>
+            <div data-role="fieldcontain">
+                <fieldset data-role="controlgroup">
+                    <!--<label for="messageStart"></label>-->
+                    <textarea name="messageStart" id="messageStart" placeholder="Message..."></textarea>
+                </fieldset>
+            </div>
+            <a id="buttonStart" data-role="button" data-theme="g" href="#">
+                Send
+            </a>
+        </div>
+        <div data-theme="d" data-role="footer" data-position="fixed">
+            <ul class="networkToSlow" data-role="listview" data-theme="e" data-divider-theme="f" data-inset="true">
+                <li>
+                    Network to slow. Reload or install our app. <!-- <a href="javascript:location.reload();"> -->
+                </li>
+            </ul>
+            <div id="loginLink">
+                <a href="#login" data-rel="popup" data-transition="pop" data-position-to="window" data-role="button" data-inline="true" data-shadow="false">Login</a>
+            </div>
+            <div>
+                <a href="#menu" data-rel="popup" data-transition="pop" data-role="button" data-inline="true" data-shadow="false" data-position-to="origin">
+                    ::&nbsp; About &nbsp;::
+                </a>
+            </div>
+        </div>
+
+        <div id="login" data-role="popup" data-theme="a" data-overlay-theme="c" class="ui-corner-all">
+<!--            <form>-->
+                <div style="padding:10px 20px;">
+                    <label for="email" class="ui-hidden-accessible">Your email address:</label>
+                    <input type="text" name="email" id="email" value="" placeholder="Your email address" data-theme="a" />
+
+                    <label for="yourPassword" class="ui-hidden-accessible">Your password:</label>
+                    <input type="password" name="yourPassword" id="yourPassword" value="" placeholder="Your password" data-theme="a" />
+
+                    <button id="loginButton" type="button" data-theme="b">Login</button>
+                </div>
+<!--            </form>-->
+        </div>
+
+        <div id="menu" data-role="popup" data-theme="c" data-shadow="true" data-corners="true" data-inset="true"> <!--   -->
+            <ul data-role="listview" data-inset="true" style="min-width:135px;">
+                <li data-icon="home"><a href="http://blog.privkey.de" rel="external" target="_blank">Blog</a></li>
+                <li data-icon="false"><a href="http://blog.privkey.de/help" rel="external" target="_blank">Help</a></li>
+                <li data-icon="false"><a href="http://blog.privkey.de/impressum" rel="external" target="_blank">Impressum</a></li>
+            </ul>
+        </div>
+    </div>
+
+
+    <!-- increaseSecurity -->
+    <div data-role="page" id="increaseSecurity">
+        <div data-theme="e" data-role="header">
+            <h4>
+                PrivKey.de
+            </h4>
+        </div>
+        <ul id="increaseSecurityBox" data-role="listview" data-theme="e" data-divider-theme="f" data-inset="true">
+            <li>
+                Setup password to protect your email.
+            </li>
+        </ul>
+        <div data-role="content">
+            <div data-role="fieldcontain">
+                <fieldset data-role="controlgroup">
+                    <!--<label for="securePassword"></label>-->
+                    <label for="securePassword" class="permanent" style="width: 100%;">
+                        <span class="oneline">Password is strong for </span>
+                        <span id="time" class="oneline">..</span><span class="oneline">.</span>
+                        <!-- <div class="oneline">Password is strong for </div>
+                        <div id="time" class="oneline">..</div><div class="oneline">.</div> -->
+                    </label>
+                    <input name="securePassword" id="securePassword" placeholder="Set secure password" value="" type="password" />
+                </fieldset>
+            </div>
+            <div data-role="fieldcontain">
+                <fieldset data-role="controlgroup">
+                    <!--<label for="securePasswordConfirm"></label>-->
+                    <input name="securePasswordConfirm" id="securePasswordConfirm" placeholder="Confirm secure password" value="" type="password" />
+                </fieldset>
+            </div>
+            <div data-role="fieldcontain">
+                <fieldset data-role="controlgroup">
+                    <!--<label for="yourEmail"></label>-->
+                    <input name="yourEmail" id="yourEmail" placeholder="Your email address (sender)" value="" type="email" />
+                </fieldset>
+            </div>
+
+            <input type="checkbox" id="tAndcAccept" data-theme="c" data-mini="true" />
+            <label class="permanent" for="tAndcAccept">
+                Accept <a href="#tAndC" id="tAndClink">terms and conditions</a> <!-- data-rel="popup" data-transition="pop" data-position-to="window" -->
+            </label>
+
+            <a id="proceedButton" data-role="button" href="#" data-icon="arrow-r" data-theme="b" data-iconpos="left">
+                Done
+            </a>
+        </div>
+        <div id="tAndC" data-role="popup" data-theme="b" data-overlay-theme="c" class="ui-corner-all">
+            <div style="padding:10px 20px;max-width: 755px;">
+                <h4>§1 Abstract</h4>
+                <p>PrivKey offers you end-to-end encryption for your communication. It is available as a online service as well as an app for numerous devices.
+                    All encryption (and decryption) takes place in your browser before any data is send to (or received from) the internet.</p>
+                <h4>§2 Privacy</h4>
+                <p>It is the overall goal of PrivKey to provide you high level privacy. Therefore we store as less as we can and encrypt as much as possible.
+                    Email addresses are the only personal data we store as plain text in order to be able to notify you about new messages.</p>
+                <h4>§3 Warranty</h4>
+                <p>PrivKey is provided "as is" without express or implied warranty of any kind. As fare as applicable by law.</p>
+                <h4>§4 License</h4>
+                <p>PrivKey is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation; either version 2 of the License, or (at your option) any later version.</p>
+                <h4>§5 Disclaimer</h4>
+                <p>PrivKey does not cover actions that are not according to law. Eventhough encryption itself is nearly uncrackable, keep in mind that authorities can hijack your computer in order to read passwords and secret keys.<br />
+                    The security of PrivKey depends on the password you choose!<br /> The longer the better, keep it secret.
+                </p>
+                <h4>§6 Final</h4>
+                <p>In case any of these paragraphs is invalid, all the others will remain.<br />
+                    These terms and conditions are subject to change.<br />
+                    Location for legal issues is Hamburg, Germany.<br />
+                </p>
+                <a href="#" id="accept" data-role="button" data-rel="back" data-icon="check" data-iconpos="right" data-theme="g">Accept</a>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- messageThread -->
+    <div data-role="page" id="msg">
+        <div data-theme="e" data-role="header">
+            <a href="#all" data-icon="arrow-l" data-iconpos="notext" data-theme="e" data-shadow="false" data-rel="back">Back</a>
+            <a href="#" data-icon="delete" data-iconpos="notext" data-theme="e" data-shadow="false" data-role="button" class="logout">Logout</a>
+            <h4>
+                PrivKey.de
+            </h4>
+
+            <!--
+            <ul data-role="listview" data-divider-theme="b" data-inset="false">
+                <li data-role="list-divider">
+                    Warning: Only Minimum Security!
+                </li>
+                <li data-theme="c">
+                    <a href="#increaseSecurity" data-transition="slide">
+                        Set up password for full security
+                    </a>
+                </li>
+            </ul>
+            -->
+        </div>
+        <div data-role="navbar" data-iconpos="top">
+            <ul>
+                <li>
+                    <a href="#new" data-transition="fade" data-theme="d" data-icon="plus" class="new"> <!-- #newMessage -->
+                        New
+                    </a>
+                </li>
+                <li>
+                    <a href="#all" data-transition="fade" data-theme="d" data-icon="grid">
+                        All
+                    </a>
+                </li>
+                <li>
+                    <a href="#options" data-transition="fade" data-theme="d" data-icon="gear">
+                        Options
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <ul data-role="listview" data-divider-theme="c" data-inset="false">
+            <li  data-theme="b" id="friend">
+                <input name="toEmailsNew" id="toEmailsNew" placeholder="To: Email(s)" value="" type="email" />
+                <span id="friendsEmails">friend1@example.com</span>
+            </li>
+        </ul>
+        <ul data-role="listview" data-divider-theme="c" data-inset="true" id="loadPreviousMessages">
+            <li data-role="list-divider">
+                <a href="">Load previous messages</a>
+            </li>
+        </ul>
+
+        <div data-role="content">
+            <ul data-role="listview" data-divider-theme="f" data-inset="true">
+                <li data-role="list-divider">
+                    Hi, how are you doing?<br />Any plans for tonight?
+                </li>
+            </ul>
+            <ul data-role="listview" data-divider-theme="c" data-inset="true">
+                <li data-role="list-divider">
+                    Thx fine.<br />
+                    Everything is quite secure here.<br />What is about you?
+                </li>
+            </ul>
+            <ul data-role="listview" data-divider-theme="f" data-inset="true">
+                <li data-role="list-divider">
+                    I all right, too.<br />Just figuring out how to theme these messages...
+                </li>
+            </ul>
+            <ul data-role="listview" data-divider-theme="c" data-inset="true">
+                <li data-role="list-divider">
+                    Brilliant, let's start an encrypted email service!
+                </li>
+            </ul>
+
+            <div data-role="fieldcontain">
+                <fieldset data-role="controlgroup">
+                    <!-- <label for="replyMessage" class="permanent">
+                    </label> -->
+                    <textarea name="replyMessage" id="replyMessage" placeholder="Reply..."></textarea><!-- data-theme="c" -->
+                </fieldset>
+            </div>
+            <a id="replyButton" data-role="button" data-theme="b" href="#" class="ui-btn-down-a">
+                Reply
+            </a>
+        </div>
+    </div>
+
+    <!-- allMessages -->
+    <div data-role="page" id="all">
+        <div data-theme="e" data-role="header">
+            <a href="#all" data-icon="arrow-l" data-iconpos="notext" data-theme="e" data-shadow="false" data-rel="back">Back</a>
+            <a href="#" data-icon="delete" data-iconpos="notext" data-theme="e" data-shadow="false" data-role="button" class="logout">Logout</a>
+            <h4>
+                PrivKey.de
+            </h4>
+            <!--
+            <ul data-role="listview" data-divider-theme="b" data-inset="false">
+                <li data-role="list-divider">
+                    Warning: Only Minimum Security!
+                </li>
+                <li data-theme="c">
+                    <a href="#increaseSecurity" data-transition="slide">
+                        Set up password for full security
+                    </a>
+                </li>
+            </ul>
+            -->
+        </div>
+
+        <div data-role="navbar" data-iconpos="top">
+            <ul>
+                <li>
+                    <a href="#new" data-transition="fade" data-theme="d" data-icon="plus" class="new"> <!-- #newMessage -->
+                        New
+                    </a>
+                </li>
+                <li>
+                    <a href="#all" data-transition="fade" data-theme="d" data-icon="grid" class="ui-btn-active ui-state-persist">
+                        All
+                    </a>
+                </li>
+                <li>
+                    <a href="#options" data-transition="fade" data-theme="d" data-icon="gear">
+                        Options
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+        <div data-role="content">
+            <ul data-role="listview" data-divider-theme="c" data-inset="false">
+                <li data-theme="b"><a href="#msg?id=11223">friend1@example.com</a></li>
+                <li data-role="list-divider">
+                    Thx fine.<br />
+                    Everything is quite secure here.<br />What is about you?
+                </li>
+                <li data-role="list-divider">
+                    I all right, too.<br />
+                    Just figuring out how to theme these messages...
+                </li>
+
+                <li data-theme="b"><a href="#msg?id=123">friend2@example.com</a></li>
+                <li data-role="list-divider">
+                    Hi, how are you doing?<br />Any plans for tonight?
+                </li>
+                <li data-role="list-divider">
+                    Brilliant, let's start an encrypted email service!
+                </li>
+
+                <li data-theme="b"><a href="#msg?id=234">friend3@example.com</a></li>
+                <li data-role="list-divider">
+                    Thx fine.<br />
+                    Everything is quite secure here.<br />What is about you?
+                </li>
+                <li data-role="list-divider">
+                    I all right, too.<br />
+                    Just figuring out how to theme these messages...
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- options -->
+    <div data-role="page" id="options">
+        <div data-theme="e" data-role="header">
+            <a href="#all" data-icon="arrow-l" data-iconpos="notext" data-theme="e" data-shadow="false" data-rel="back">Back</a>
+            <a href="#" data-icon="delete" data-iconpos="notext" data-theme="e" data-shadow="false" data-role="button" class="logout">Logout</a>
+            <h4>
+                PrivKey.de
+            </h4>
+        </div>
+
+        <div data-role="navbar" data-iconpos="top">
+            <ul>
+                <li>
+                    <a href="#new" data-transition="fade" data-theme="d" data-icon="plus" class="new">
+                        New
+                    </a>
+                </li>
+                <li>
+                    <a href="#all" data-transition="fade" data-theme="d" data-icon="grid">
+                        All
+                    </a>
+                </li>
+                <li>
+                    <a href="#options" data-transition="fade" data-theme="d" data-icon="gear" class="ui-btn-active ui-state-persist">
+                        Options
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+        <div data-role="content">
+            <ul data-role="listview" data-divider-theme="c" data-inset="false">
+                <li data-icon="delete"><a href="#">Logout</a></li>
+                <!-- <li><a href="http://www.blog.privkey.de/" rel="external" target="_blank">Blog</a></li>
+                <li><a href="http://www.blog.privkey.de/faq" rel="external" target="_blank">FAQ</a></li>-->
+                <li><a href="https://github.com/privkey/client/wiki" rel="external" target="_blank">Developer Wiki</a></li>
+                <li><a href="https://github.com/privkey/client/issues/new" rel="external"  target="_blank">Report an issue</a></li>
+                <li><a href="#tAndC2" id="tAndCoptionslink" data-rel="popup" data-transition="pop" data-position-to="window">Terms and conditions</a></li>
+                <li><a href="http://blog.privkey.de/impressum" rel="external" target="_blank">Impressum</a></li>
+            </ul>
+        </div>
+        <div id="tAndC2" data-role="popup" data-theme="b" data-overlay-theme="c" class="ui-corner-all">
+        </div>
+    </div>
+
+<!-- <script type="text/javascript" src="networkToSlow.js"></script> -->
+
+</body>
+</html>
