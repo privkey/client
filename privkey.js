@@ -292,6 +292,7 @@ function showMessages(msg) {
     console.log('OpenPGP: ' + msg);
 }
 
+
 window.onload = function () {
     $('.networkToSlow').remove();
 };
