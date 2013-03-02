@@ -27,7 +27,8 @@ noscript h1, noscript p {
 
 /* highlight tags wrong input */
 .red {
-    color: red
+    color: red;
+    font-weight: bold;
 }
 
 /* #increaseSecurity password strength in one line */
