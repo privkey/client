@@ -44,15 +44,15 @@
     </noscript>
 
     <!--[if IE]>
-    <script type="text/javascript" src="CFInstall.min.js"></script>
+    <script src="CFInstall.min.js"></script>
 
-    <style>
+    <style type="text/css">
     .chromeFrameInstallDefaultStyle {
         border: 5px solid blue;
     }
     </style>
 
-    <script>
+    <script type="text/javascript">
         // The conditional ensures that this code will only execute in IE,
         // Therefore we can use the IE-specific attachEvent without worry
         window.attachEvent("onload", function() {
@@ -92,6 +92,11 @@
             </a>
         </div>
         <div data-theme="d" data-role="footer" data-position="fixed">
+            <ul class="networkToSlow" data-role="listview" data-theme="e" data-divider-theme="f" data-inset="true">
+                <li>
+                    Network to slow. Reload or install app. <!-- <a href="javascript:location.reload();"> -->
+                </li>
+            </ul>
             <div id="loginLink">
                 <a href="#login" data-rel="popup" data-transition="pop" data-position-to="window" data-role="button" data-inline="true" data-shadow="false">Login</a>
             </div>
