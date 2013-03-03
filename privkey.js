@@ -1,7 +1,7 @@
 var privkey = {
     init: {
         init: function () {
-            privkey.crypto.init();
+            //privkey.crypto.init();
             $(document).ready(function() {
                 // noscript issue, makes DOM visible
                 $('head').append('<style type="text/css">[data-role="page"] {display: block;}</style>');
@@ -24,23 +24,30 @@ var privkey = {
     },
 
     crypto: {
+        /*
         openpgp: new _openpgp(),
         init: function() {
             // modification in src/encoding/openpgp.encoding.asciiarmor.js
             // shows version and commentstring only
-            var openpgp_encoding_armor_addheader = function() {
+            openpgp_encoding_armor_addheader = function() {
                 var result = "";
                 //if (openpgp.config.config.show_version) {
-                result += /*"Version: "+*/openpgp.config.versionstring+'\r\n';
+                result += /*"Version: "+/openpgp.config.versionstring+'\r\n';
                 //}
                 //if (openpgp.config.config.show_comment) {
-                result += /*"Comment: "+*/openpgp.config.commentstring+'\r\n';
+                result += /*"Comment: "+/openpgp.config.commentstring+'\r\n';
                 //}
                 result += '\r\n';
                 return result;
             };
             privkey.crypto.openpgp.init();
             privkey.crypto.openpgp.config.versionstring = "This is a secure PrivKey message.";
+        },
+        */
+        // computes the hash of a string
+        hash: function(string) {
+            var shaObj = new jsSHA(string, "ASCII");
+            return shaObj.getHash("SHA-512", "HEX");
         }
     },
 
@@ -273,10 +280,31 @@ var privkey = {
             var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
             return re.test(email);
         }
+    },
+    tests: function() {
+        /*
+        var keypair = openpgp.generate_key_pair(1, 1024, 'developer@privkey.de');
+        var pubKey = openpgp.read_publicKey(keypair.publicKeyArmored);
+        var privKey= openpgp.read_privateKey(keypair.privateKeyArmored);
+
+        var data = "my secret msg";
+        var prefixrandom = openpgp_crypto_getRandomBytes(16);
+        var key = openpgp_crypto_getRandomBytes(32);
+        var aesEncrypted = openpgp_cfb_encrypt(prefixrandom, AESencrypt, data, 16, keyExpansion(key), false).substring(0, data.length + 18);
+
+        var encrypted_msg = openpgp.write_signed_and_encrypted_message(pubKey[0], privKey[0], "messagetext");
+
+        var sha512Hash = privkey.crypto.hash('test123');
+        */
     }
 };
 
 privkey.init.init();
+
+
+var openpgp = new _openpgp();
+openpgp.init();
+privkey.tests();
 
 // some old stuff, never mind, integrate elsewhere and remove at some time
 function randString(stringLength) {
