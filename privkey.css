@@ -31,10 +31,21 @@ noscript h1, noscript p {
     font-weight: bold;
 }
 
-/* use invisible labels to avoid warnings in WebStorm 4.0.3 */
-.noLabel {
-    display: none;
-    font-size: 20px
+/* correct position of icons for some reason */
+.ui-icon-plus {
+    background-position: 0px 0px;
+}
+.ui-icon-gear {
+    background-position: -288px 0px;
+}
+.ui-icon-grid {
+    background-position: -432px 0px;
+}
+.ui-icon-arrow-l {
+    background-position: -145px 0px;
+}
+.ui-icon-delete {
+    background-position: -72px 0px;
 }
 
 /* #increaseSecurity password strength in one line */
