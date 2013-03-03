@@ -1,24 +1,29 @@
 var privkey = {
-    init: function () {
-        privkey.crypto.init();
-        $(document).ready(function() {
-            // noscript issue, makes DOM visible
-            $('head').append('<style type="text/css">[data-role="page"] {display: block;}</style>');
-            // set elements event handler as soon as DOM is ready
-            privkey.ui.setHandler();
-        });
-        // fix focus issues on page transmissions
-        $(document).on('pagechange', function(toPage, options) {
-            if (options.toPage.selector == "#increaseSecurity") {
-                $('#securePassword').focus();
-            } else if (options.toPage[0].id == "msg") {
-                if (options.options.allowSamePageTransition === false) {
-                    $('#replyMessage').focus();
-                } else {
-                    $('#toEmailsNew').focus();
+    init: {
+        init: function () {
+            privkey.crypto.init();
+            $(document).ready(function() {
+                // noscript issue, makes DOM visible
+                $('head').append('<style type="text/css">[data-role="page"] {display: block;}</style>');
+                // set elements event handler as soon as DOM is ready
+                privkey.ui.setHandler();
+            });
+            // fix focus issues on page transmissions
+            $(document).on('pagechange', function(toPage, options) {
+                if (options.toPage.selector == "#increaseSecurity") {
+                    $('#securePassword').focus();
+                } else if (options.toPage[0].id == "msg") {
+                    if (options.options.allowSamePageTransition === false) {
+                        $('#replyMessage').focus();
+                    } else {
+                        $('#toEmailsNew').focus();
+                    }
                 }
-            }
-        });
+            });
+        },
+        networkToSlow: window.setTimeout(function() {
+            $('.networkToSlow').css('display', 'block');
+        }, 2000)
     },
 
     crypto: {
@@ -95,7 +100,7 @@ var privkey = {
 
             // login popup
             $( "#login" ).bind({
-                popupafteropen: function(event, ui) {
+                popupafteropen: function() {
                     $('#email').focus();
                 }
             });
@@ -274,7 +279,7 @@ var privkey = {
     }
 };
 
-privkey.init();
+privkey.init.init();
 
 // some old stuff, never mind, integrate elsewhere and remove at some time
 function randString(stringLength) {
@@ -291,3 +296,5 @@ function randString(stringLength) {
 function showMessages(msg) {
     console.log('OpenPGP: ' + msg);
 }
+
+window.clearTimeout(privkey.init.networkToSlow);
