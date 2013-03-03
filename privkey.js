@@ -20,10 +20,7 @@ var privkey = {
                     }
                 }
             });
-        },
-        networkToSlow: window.setTimeout(function() {
-            $('.networkToSlow').css('display', 'block');
-        }, 2000)
+        }
     },
 
     crypto: {
@@ -297,4 +294,6 @@ function showMessages(msg) {
     console.log('OpenPGP: ' + msg);
 }
 
-window.clearTimeout(privkey.init.networkToSlow);
+window.document.onload = function() {
+    document.getElementById('networkToSlow').remove();
+};

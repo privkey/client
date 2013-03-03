@@ -25,11 +25,6 @@ noscript h1, noscript p {
     line-height: 3em;
 }
 
-/* (usually) hide warning that network connection is too slow */
-.networkToSlow {
-    display: none;
-}
-
 /* highlight tags wrong input */
 .red {
     color: red;
