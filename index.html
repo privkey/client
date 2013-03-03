@@ -169,10 +169,12 @@
                 </fieldset>
             </div>
 
-            <input type="checkbox" id="tAndcAccept" data-theme="c" data-mini="true" />
-            <label class="permanent" for="tAndcAccept">
-                Accept <a href="#tAndC" id="tAndClink">terms and conditions</a> <!-- data-rel="popup" data-transition="pop" data-position-to="window" -->
-            </label>
+            <div data-role="fieldcontain">
+                 <fieldset data-role="controlgroup">
+                     <input type="checkbox" name="tAndcAccept" id="tAndcAccept" data-theme="c" data-mini="true" />
+                     <label for="tAndcAccept" class="permanent">Accept <a href="#tAndC" id="tAndClink">terms and conditions</a></label>
+                 </fieldset>
+             </div>
 
             <a id="proceedButton" data-role="button" href="#" data-icon="arrow-r" data-theme="b" data-iconpos="left">
                 Done
