@@ -1,3 +1,8 @@
+window.onload = function() {
+    alert("Onload Working on PhoneGap!");
+    document.getElementById('networkToSlow').remove();
+};
+
 var privkey = {
     init: {
         init: function () {
@@ -324,6 +329,8 @@ function showMessages(msg) {
     console.log('OpenPGP: ' + msg);
 }
 
+/*
 window.onload = function() {
     document.getElementById('networkToSlow').remove();
 };
+    */
