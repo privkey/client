@@ -1,5 +1,8 @@
 /* noscript issue */
-div[data-role="page"] { display:none; }
+div[data-role="page"], #start {
+    display:none;
+}
+
 noscript h1, noscript p {
     width: 100%;
 }

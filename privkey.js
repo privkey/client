@@ -1,6 +1,6 @@
 // removes warning when this lines of script are executed and loading is complete then
 $(document).ready(function() {
-    alert("Document Ready! Just in time?");
+    //alert("Document Ready! Just in time?");
     document.getElementById('networkToSlow').remove();
 });
 
@@ -16,7 +16,7 @@ var privkey = {
             //privkey.crypto.init();
             $(document).ready(function() {
                 // noscript issue, makes DOM visible
-                $('head').append('<style type="text/css">[data-role="page"] {display: block;}</style>');
+                $('head').append('<style type="text/css">[data-role="page"], #start {display: block;}</style>');
                 // set elements event handler as soon as DOM is ready
                 privkey.ui.setHandler();
             });
