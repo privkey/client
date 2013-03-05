@@ -1,3 +1,4 @@
+// test does not work on desktop browser
 var deviceReadyDeferred = $.Deferred();
 var jqmReadyDeferred = $.Deferred();
 
