@@ -1,4 +1,4 @@
-// makes sure the whole document is loaded
+// removes warning when this lines of script are executed and loading is complete then
 $(document).ready(function() {
     alert("Document Ready! Just in time?");
     document.getElementById('networkToSlow').remove();
