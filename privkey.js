@@ -370,6 +370,13 @@ window.onload = function() {
 };
 */
 
+/* fired long before page is displayed
 $(document).ready(function () {
    alert("Document is ready!");
+});
+*/
+
+$(document).bind("mobileinit", function(){
+    alert("Is mobileinit here?");
+    $('head').append('<style type="text/css">[data-role="page"], #start {display: block;}</style>');
 });
