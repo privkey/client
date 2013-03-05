@@ -381,7 +381,7 @@ $(document).bind("mobileinit", function(){
     $('head').append('<style type="text/css">[data-role="page"], #start {display: block;}</style>');
 
     $(document).ready(function() {
-        alert("Document Ready! Just in time?");
-        document.getElementById('networkToSlow').remove();
+        //alert("Document Ready! Just in time?");
+        $('#networkToSlow').remove();
     });
 });
