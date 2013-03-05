@@ -1,4 +1,24 @@
+var deviceReadyDeferred = $.Deferred();
+var jqmReadyDeferred = $.Deferred();
+
+document.addEventListener("deviceReady", deviceReady, false);
+
+function deviceReady() {
+    deviceReadyDeferred.resolve();
+}
+
+$(document).one("mobileinit", function () {
+    jqmReadyDeferred.resolve();
+});
+
+$.when(deviceReadyDeferred, jqmReadyDeferred).then(doWhenBothFrameworksLoaded);
+
+function doWhenBothFrameworksLoaded() {
+    alert("Both are ready!");
+}
+
 // removes warning when this lines of script are executed and loading is complete then
+/*
 $(document).ready(function() {
     alert("Document Ready! Just in time?");
     document.getElementById('networkToSlow').remove();
@@ -10,6 +30,8 @@ window.onload = function() {
     document.getElementById('networkToSlow').remove();
 };
 */
+
+/*
 var privkey = {
     init: {
         init: function () {
@@ -63,6 +85,7 @@ var privkey = {
             return shaObj.getHash("SHA-512", "HEX");
         }
         */
+/*
     },
 
     // contains everything that deals with DOM of _U_ser _I_nterface and evaluates input
@@ -219,6 +242,7 @@ var privkey = {
                      sendMessage($('#toEmailsStart').val(), $('#messageStart').val());
                      }
                      */
+/*
                     window.setTimeout(function() {$.mobile.changePage($('#msg'))}, 3001);
                 }
             });
@@ -310,6 +334,7 @@ var privkey = {
 
         var sha512Hash = privkey.crypto.hash('test123');
         */
+/*
     }
 };
 
