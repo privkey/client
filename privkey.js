@@ -45,10 +45,12 @@ var privkey = {
         },
         */
         // computes the hash of a string
+        /*
         hash: function(string) {
             var shaObj = new jsSHA(string, "ASCII");
             return shaObj.getHash("SHA-512", "HEX");
         }
+        */
     },
 
     // contains everything that deals with DOM of _U_ser _I_nterface and evaluates input
@@ -302,9 +304,9 @@ var privkey = {
 privkey.init.init();
 
 
-var openpgp = new _openpgp();
-openpgp.init();
-privkey.tests();
+//var openpgp = new _openpgp();
+//openpgp.init();
+//privkey.tests();
 
 // some old stuff, never mind, integrate elsewhere and remove at some time
 function randString(stringLength) {
