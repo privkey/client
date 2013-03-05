@@ -1,4 +1,4 @@
-// test does not work on desktop browser
+/* this code does not work at all
 var deviceReadyDeferred = $.Deferred();
 var jqmReadyDeferred = $.Deferred();
 
@@ -17,14 +17,16 @@ $.when(deviceReadyDeferred, jqmReadyDeferred).then(doWhenBothFrameworksLoaded);
 function doWhenBothFrameworksLoaded() {
     alert("Both are ready!");
 }
+*/
 
 // removes warning when this lines of script are executed and loading is complete then
-/*
+
+/* this is fired before any networkToSlow warning is displayed
 $(document).ready(function() {
     alert("Document Ready! Just in time?");
     document.getElementById('networkToSlow').remove();
 });
-
+*/
 /*
 window.onload = function() {
     alert("Onload Working on PhoneGap!");
@@ -367,3 +369,7 @@ window.onload = function() {
     document.getElementById('networkToSlow').remove();
 };
 */
+
+$(document).ready(function () {
+   alert("Document is ready!");
+});
