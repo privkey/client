@@ -1,8 +1,9 @@
+/*
 window.onload = function() {
     alert("Onload Working on PhoneGap!");
     document.getElementById('networkToSlow').remove();
 };
-
+*/
 var privkey = {
     init: {
         init: function () {
@@ -333,4 +334,9 @@ function showMessages(msg) {
 window.onload = function() {
     document.getElementById('networkToSlow').remove();
 };
-    */
+*/
+
+$(document).ready(function() {
+    //alert("Document Ready! Just in time?");
+    document.getElementById('networkToSlow').remove();
+});
