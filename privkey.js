@@ -1,3 +1,9 @@
+// makes sure the whole document is loaded
+$(document).ready(function() {
+    alert("Document Ready! Just in time?");
+    document.getElementById('networkToSlow').remove();
+});
+
 /*
 window.onload = function() {
     alert("Onload Working on PhoneGap!");
@@ -335,9 +341,3 @@ window.onload = function() {
     document.getElementById('networkToSlow').remove();
 };
 */
-
-// makes sure the whole document is loaded
-$(document).ready(function() {
-    //alert("Document Ready! Just in time?");
-    document.getElementById('networkToSlow').remove();
-});
