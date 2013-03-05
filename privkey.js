@@ -376,7 +376,12 @@ $(document).ready(function () {
 });
 */
 
+// mobileinit seems to work perfectly with appending javascript to make dom visible!
 $(document).bind("mobileinit", function(){
-    alert("Is mobileinit here?");
     $('head').append('<style type="text/css">[data-role="page"], #start {display: block;}</style>');
+
+    $(document).ready(function() {
+        alert("Document Ready! Just in time?");
+        document.getElementById('networkToSlow').remove();
+    });
 });
