@@ -336,6 +336,7 @@ window.onload = function() {
 };
 */
 
+// makes sure the whole document is loaded
 $(document).ready(function() {
     //alert("Document Ready! Just in time?");
     document.getElementById('networkToSlow').remove();
