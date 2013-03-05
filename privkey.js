@@ -1,50 +1,20 @@
-/* this code does not work at all
-var deviceReadyDeferred = $.Deferred();
-var jqmReadyDeferred = $.Deferred();
-
-document.addEventListener("deviceReady", deviceReady, false);
-
-function deviceReady() {
-    deviceReadyDeferred.resolve();
-}
-
-$(document).one("mobileinit", function () {
-    jqmReadyDeferred.resolve();
-});
-
-$.when(deviceReadyDeferred, jqmReadyDeferred).then(doWhenBothFrameworksLoaded);
-
-function doWhenBothFrameworksLoaded() {
-    alert("Both are ready!");
-}
-*/
-
-// removes warning when this lines of script are executed and loading is complete then
-
-/* this is fired before any networkToSlow warning is displayed
-$(document).ready(function() {
-    alert("Document Ready! Just in time?");
-    document.getElementById('networkToSlow').remove();
-});
-*/
-/*
-window.onload = function() {
-    alert("Onload Working on PhoneGap!");
-    document.getElementById('networkToSlow').remove();
-};
-*/
-
-/*
 var privkey = {
     init: {
         init: function () {
             //privkey.crypto.init();
-            $(document).ready(function() {
+            // mobileinit seems to work perfectly with appending javascript to make dom visible!
+            $(document).bind("mobileinit", function(){
                 // noscript issue, makes DOM visible
-                $('head').append('<style type="text/css">[data-role="page"], #start {display: block;}</style>');
-                // set elements event handler as soon as DOM is ready
-                privkey.ui.setHandler();
+                $('head').append('<style type="text/css">div[data-role="page"], #start {display: block;}</style>');
+
+                $(document).ready(function() {
+                    // sets event handler for ui
+                    privkey.ui.setHandler();
+                    // calls function at the end of this file to make sure document is loaded completely
+                    removeNetworkToSlow();
+                });
             });
+
             // fix focus issues on page transmissions
             $(document).on('pagechange', function(toPage, options) {
                 if (options.toPage.selector == "#increaseSecurity") {
@@ -88,7 +58,7 @@ var privkey = {
             return shaObj.getHash("SHA-512", "HEX");
         }
         */
-/*
+
     },
 
     // contains everything that deals with DOM of _U_ser _I_nterface and evaluates input
@@ -245,7 +215,7 @@ var privkey = {
                      sendMessage($('#toEmailsStart').val(), $('#messageStart').val());
                      }
                      */
-/*
+
                     window.setTimeout(function() {$.mobile.changePage($('#msg'))}, 3001);
                 }
             });
@@ -337,7 +307,6 @@ var privkey = {
 
         var sha512Hash = privkey.crypto.hash('test123');
         */
-/*
     }
 };
 
@@ -376,12 +345,20 @@ $(document).ready(function () {
 });
 */
 
-// mobileinit seems to work perfectly with appending javascript to make dom visible!
-$(document).bind("mobileinit", function(){
-    $('head').append('<style type="text/css">[data-role="page"], #start {display: block;}</style>');
 
-    $(document).ready(function() {
-        //alert("Document Ready! Just in time?");
-        $('#networkToSlow').remove();
-    });
-});
+
+/* BACKUP: this seems to be the perfect structure!
+*  (for Android mobile chromium and firefox)
+$(document).bind("mobileinit", function(){
+ $('head').append('<style type="text/css">[data-role="page"], #start {display: block;}</style>');
+
+ $(document).ready(function() {
+ $('#networkToSlow').remove();
+ });
+ });
+* */
+
+// removes warning network to slow. At end of this file to make sure complete file is loaded
+function removeNetworkToSlow() {
+    $('#networkToSlow').remove();
+}
