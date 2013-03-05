@@ -1,5 +1,6 @@
 var privkey = {
     init: {
+        // initializes privkey
         init: function () {
             //privkey.crypto.init();
             // mobileinit seems to work perfectly with appending javascript to make dom visible!
