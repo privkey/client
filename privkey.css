@@ -1,5 +1,6 @@
-/* noscript issue */
-div[data-role="page"], #start {
+/* noscript issue
+ if we have JavaScript jquery mobile will reset this value on its own */
+div[data-role="page"] {
     display:none;
 }
 

@@ -4,9 +4,9 @@ var privkey = {
         init: function () {
             //privkey.crypto.init();
             // mobileinit seems to work perfectly with appending javascript to make dom visible!
-            $(document).bind("mobileinit", function(){
+            $(document).one("mobileinit", function(){
                 // noscript issue, makes DOM visible
-                $('head').append('<style type="text/css">div[data-role="page"], #start {display: block;}</style>');
+                //$('head').append('<style type="text/css">div[data-role="page"]</style>');   //, #start {display: block;}
 
                 $(document).ready(function() {
                     // sets event handler for ui
@@ -98,6 +98,7 @@ var privkey = {
                 }
 
                 if (proceed) {
+                    //$('#start').css('display', 'auto');
                     $.mobile.changePage($('#increaseSecurity'));
                 }
             });
