@@ -314,9 +314,13 @@ var privkey = {
 
 privkey.init.init();
 
+var openpgp = {
+    init: function() {},
+    encrypt: function(args) {}
+}
 
-//var openpgp = new _openpgp();
-//openpgp.init();
+openpgp = new _openpgp();
+openpgp.init();
 //privkey.tests();
 
 // some old stuff, never mind, integrate elsewhere and remove at some time

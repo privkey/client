@@ -1,0 +1,9 @@
+[submodule "lib/openpgpjs"]
+	path = lib/openpgpjs
+	url = https://github.com/openpgpjs/openpgpjs/
+[submodule "lib/jquery"]
+	path = lib/jquery
+	url = https://github.com/jquery/jquery
+[submodule "lib/jquerymobile"]
+	path = lib/jquerymobile
+	url = https://github.com/jquery/jquery-mobile
